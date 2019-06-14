@@ -13,7 +13,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                sh 'ssh jenkins@ub1 \'hostname\''
+                sh 'ssh jenkins@ub1 \'hostname\'; \'uptime\''
             }
         }
         stage('Test') {
