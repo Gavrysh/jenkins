@@ -1,10 +1,19 @@
+properties([disableConcurrentBuilds()])
+
 pipeline {
-    agent any
+    agent {
+        label 'master'
+    }
+    options {
+        buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
+        timestamps()
+    }
 
     stages {
         stage('Build') {
             steps {
                 echo 'Building..'
+                sh 'ssh jenkins@ub1 \'hostname\''
             }
         }
         stage('Test') {
