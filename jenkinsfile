@@ -13,9 +13,6 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                sh 'ssh jenkins@jn1 \'hostname\''
-                sh 'ssh jenkins@jn2 \'hostname\''
-                sh 'ssh jenkins@ws-ub \'hostname\''
             }
         }
         stage('Test') {
@@ -26,6 +23,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
+				sh 'ssh jenkins@ws-ub deploy'
             }
         }
     }
