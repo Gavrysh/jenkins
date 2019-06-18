@@ -14,7 +14,6 @@ pipeline {
             steps {
                 echo 'Building..'
                 sh 'ssh jenkins@jn1 \'hostname\''
-                #sh 'ssh jenkins@ub1 \'uptime\''
             }
         }
         stage('Test') {
