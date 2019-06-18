@@ -23,7 +23,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
-				sh 'ssh jenkins@ws-ub /home/jenkins/deploy'
+				sh 'ssh jenkins@ws-ub bash -s < /home/jenkins/deploy'
             }
         }
     }
