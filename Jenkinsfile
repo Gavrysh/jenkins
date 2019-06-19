@@ -27,8 +27,11 @@ pipeline {
     }
   }
   post {
-	always {
-		echo 'Post always job...'
+	failure {
+		echo 'Post failure job...'
+	}
+	success {
+		echo 'Post success job...'
 	}
   }
 }
