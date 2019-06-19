@@ -14,11 +14,11 @@ pipeline {
     stage('Deploy') {
       steps {
         echo 'Deploying....'
-        sh 'rm -rf /home/jenkins/project'
+        sh 'rm -rf project/* && cd /home/jenkins/project'
         sh '''
 
 
-git clone git@github.com:Gavrysh/jenkins.git /home/jenkins/project'''
+git clone git@github.com:Gavrysh/jenkins.git'''
         sh '''tar --exclude=\'.git\' --exclude=\'Jenkinsfile\' -zcvf deploy.tar.gz /home/jenkins/project/
 '''
         sh 'scp /home/jenkins/deploy.tar.gz jenkins@54.93.249.169:/home/jenkins'
