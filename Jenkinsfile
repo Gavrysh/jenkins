@@ -19,8 +19,7 @@ pipeline {
 
 
 git clone git@github.com:Gavrysh/jenkins.git /home/jenkins/project/'''
-        sh '''tar --exclude=\'.git\' --exclude=\'Jenkinsfile\' -zcvf deploy.tar.gz project/
-'''
+        sh 'cd /home/jemkins/project/ && tar --exclude=\'.git\' --exclude=\'Jenkinsfile\' -zcvf deploy.tar.gz *'
         sh 'scp /home/jenkins/deploy.tar.gz jenkins@54.93.249.169:/home/jenkins'
         sh 'ssh jenkins@54.93.249.169 tar -xzvf deploy.tar.gz -C /var/www/html'
       }
