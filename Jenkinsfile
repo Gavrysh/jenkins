@@ -26,4 +26,9 @@ pipeline {
       }
     }
   }
+  post {
+	always {
+		echo 'Post always job...'
+	}
+  }
 }
