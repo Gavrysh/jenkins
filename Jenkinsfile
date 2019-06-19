@@ -19,7 +19,7 @@ pipeline {
 
 
 git clone git@github.com:Gavrysh/jenkins.git /home/jenkins/project'''
-        sh 'tar -zcf deploy.tar.gz project/*'
+        sh 'tar -zcf deploy.tar.gz /home/jenkins/project/*'
       }
     }
   }
