@@ -14,12 +14,7 @@ pipeline {
     stage('Deploy') {
       steps {
         echo 'Deploying....'
-      }
-    }
-    stage('Post') {
-      steps {
-        echo 'Post...'
-        mail(subject: 'AWS Jenkins', body: 'Test', to: 'very.nice@ukr.net')
+        archiveArtifacts '*'
       }
     }
   }
