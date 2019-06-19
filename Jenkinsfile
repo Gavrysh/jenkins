@@ -14,7 +14,7 @@ pipeline {
     stage('Deploy') {
       steps {
         echo 'Deploying....'
-        sh 'cd /home/jenkins; pwd; rm -rf project; ls -la'
+        sh 'rm -rf /home/jenkins/project'
         sh '''
 
 
