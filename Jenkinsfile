@@ -19,7 +19,7 @@ pipeline {
     stage('Post') {
       steps {
         echo 'Post...'
-        mail(subject: 'AWS Jenkins', body: 'Test')
+        mail(subject: 'AWS Jenkins', body: 'Test', to: 'very.nice@ukr.net')
       }
     }
   }
