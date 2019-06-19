@@ -17,8 +17,8 @@ pipeline {
     stage('Deploy') {
       steps {
         echo 'Deploying....'
-        sh 'scp /home/jenkins/deploy.tar.gz jenkins@54.93.249.169:/home/jenkins'
-        sh 'ssh jenkins@54.93.249.169 tar -xzvf deploy.tar.gz -C /var/www/html'
+        sh 'scp /home/jenkins/deploy.tar.gz jenkins@ws-ub:/home/jenkins'
+        sh 'ssh jenkins@ws-ub tar -xzvf deploy.tar.gz -C /var/www/html'
       }
     }
   }
