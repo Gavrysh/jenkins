@@ -14,7 +14,7 @@ pipeline {
     stage('Deploy') {
       steps {
         echo 'Deploying....'
-        sh 'git clone git@github.com:Gavrysh/jenkins.git /home/jenkins/jenkins/'
+        sh 'git clone git@github.com:Gavrysh/jenkins.git /home/jenkins/project'
       }
     }
   }
