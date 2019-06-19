@@ -40,11 +40,10 @@ pipeline {
 	success {
 		echo 'Post success job...'
 		emailext (
-			subject: "${status}: Job '${env.JOB_NAME} ([${env.BUILD_NUMBER})'",
-			body: """
-			Check console output at <a href="${env.BUILD_URL}">${env.JOB_NAME} (${env.BUILD_NUMBER})</a>""",
-			to: "${BUILD_USER_EMAIL}",
-			from: 'jenkins@company.com'
+			subject: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+			body: """<p>SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
+            <p>Check console output at &QUOT;<a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>&QUOT;</p>""",
+			recipientProviders: [[$class: 'DevelopersRecipientProvider']]
 		)
 	}
   }
