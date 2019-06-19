@@ -14,7 +14,7 @@ pipeline {
     stage('Deploy') {
       steps {
         echo 'Deploying....'
-        sh 'cd ~; rm -rf project'
+        sh 'cd ~; rm -rf project; ls -la'
         sh '''
 
 
