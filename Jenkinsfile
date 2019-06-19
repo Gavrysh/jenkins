@@ -14,7 +14,7 @@ pipeline {
     stage('Deploy') {
       steps {
         echo 'Deploying....'
-        archiveArtifacts '/etc/passwd'
+        sh 'git clone git@github.com:Gavrysh/jenkins.git /home/ubuntu/jenkins'
       }
     }
   }
