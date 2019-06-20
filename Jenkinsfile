@@ -1,9 +1,16 @@
 pipeline {
+
   agent {
     node {
         label 'ubuntu'
     }
   }
+  
+  options {
+	buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
+	timestamps()
+  }
+  
   stages {
     stage('Build') {
       steps {
@@ -27,20 +34,14 @@ pipeline {
       }
     }
   }
+
   post {
     failure {
         echo 'Post failure job...'
         emailext body: 'Please go to ${BUILD_URL} and verify the build',
-        recipientProviders: [[$class: 'DevelopersRecipientProvider'],
-        [$class: 'RequesterRecipientProvider']],
+        recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']],
         subject: "Job '${JOB_NAME}' (${BUILD_NUMBER}) is failure"
     }
-    success {
-        echo 'Post success job...'
-        emailext body: 'Please go to ${BUILD_URL} and verify the build',
-        recipientProviders: [[$class: 'DevelopersRecipientProvider'],
-        [$class: 'RequesterRecipientProvider']],
-        subject: "Job '${JOB_NAME}' (${BUILD_NUMBER}) is success"
-    }
   }
+  
 }
