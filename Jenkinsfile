@@ -33,7 +33,6 @@ pipeline {
         recipientProviders: [[$class: 'DevelopersRecipientProvider'],
         [$class: 'RequesterRecipientProvider']],
         subject: "Job '${JOB_NAME}' (${BUILD_NUMBER}) is failure"
-        )
     }
     success {
         echo 'Post success job...'
