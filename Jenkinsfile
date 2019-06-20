@@ -8,7 +8,7 @@ pipeline {
     stage('Build') {
       steps {
         echo 'Building..'
-        sh 'rm -rf /home/jenkins/project && mkdir /home/jenkins/project && cd /home/jenkins/'
+        sh 'rm -rf /home/jenkins/project/* && mkdir /home/jenkins/project && cd /home/jenkins/'
         sh 'git clone git@github.com:Gavrysh/school-php.git /home/jenkins/project/'
         sh 'cd /home/jenkins/project/ && tar --exclude=\'.git\' --exclude=\'Jenkinsfile\' -zcvf /home/jenkins/deploy.tar.gz *'
       }
