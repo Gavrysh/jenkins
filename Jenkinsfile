@@ -42,7 +42,8 @@ pipeline {
 		emailext body: 'A Test EMail',
 		recipientProviders: [[$class: 'DevelopersRecipientProvider'],
 		[$class: 'RequesterRecipientProvider']],
-		subject: 'Test'
+		from: 'jenkins@company.com',
+		subject: "${status}: Job ${env.JOB_NAME} ([${env.BUILD_NUMBER})"
 	}
   }
 }
