@@ -1,8 +1,8 @@
 pipeline {
   agent {
-	node {
-		label 'ubuntu'
-	}
+    node {
+        label 'ubuntu'
+    }
   }
   stages {
     stage('Build') {
@@ -27,20 +27,21 @@ pipeline {
     }
   }
   post {
-	failure {
-		echo 'Post failure job...'
-		emailext (
-			subject: "${status}: Job ${env.JOB_NAME} ([${env.BUILD_NUMBER})",
-			body: """
-			Check console output at <a href="${env.BUILD_URL}">${env.JOB_NAME} (${env.BUILD_NUMBER})</a>""",
-			to: "${BUILD_USER_EMAIL}",
-			from: 'jenkins@company.com'
-		)
-	}
-	success {
-		echo 'Post success job...'
-		subject: "Job '${JOB_NAME}' (${BUILD_NUMBER}) is waiting for input",
-		body: "Please go to ${BUILD_URL} and verify the build"
-	}
+    failure {
+        echo 'Post failure job...'
+        emailext (
+            subject: "${status}: Job ${env.JOB_NAME} ([${env.BUILD_NUMBER})",
+            body: """
+            Check console output at <a href="${env.BUILD_URL}">${env.JOB_NAME} (${env.BUILD_NUMBER})</a>""",
+            to: "${BUILD_USER_EMAIL}",
+            from: 'jenkins@company.com'
+        )
+    }
+    success {
+        echo 'Post success job...'
+        recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']],
+        subject: "Job '${JOB_NAME}' (${BUILD_NUMBER}) is waiting for input",
+        body: "Please go to ${BUILD_URL} and verify the build"
+    }
   }
 }
