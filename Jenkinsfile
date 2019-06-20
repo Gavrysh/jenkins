@@ -39,7 +39,9 @@ pipeline {
     }
     success {
         echo 'Post success job...'
-        recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']],
+        emailext body: 'A Test EMail',
+        recipientProviders: [[$class: 'DevelopersRecipientProvider'],
+        [$class: 'RequesterRecipientProvider']],
         subject: "Job '${JOB_NAME}' (${BUILD_NUMBER}) is waiting for input",
         body: "Please go to ${BUILD_URL} and verify the build"
     }
