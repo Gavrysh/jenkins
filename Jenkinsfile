@@ -8,7 +8,7 @@ pipeline {
     stage('Build') {
       steps {
         echo 'Building..'
-        sh 'rm -rf /home/jenkins/project/* && cd /home/jenkins/'
+        sh 'rm -rf /home/jenkins/project && mkdir /home/jenkins/project && cd /home/jenkins/'
         sh 'git clone git@github.com:Gavrysh/school-php.git /home/jenkins/project/'
         sh 'cd /home/jenkins/project/ && tar --exclude=\'.git\' --exclude=\'Jenkinsfile\' -zcvf /home/jenkins/deploy.tar.gz *'
       }
@@ -22,7 +22,7 @@ pipeline {
       steps {
         echo 'Deploying....'
         sh 'scp /home/jenkins/deploy.tar.gz jenkins@ws-ub:/home/jenkins'
-        sh 'ssh jenkins@ws-ub tar -zcvf /home/jenkins/html.tar.gz /var/www/html && rm -rf /var/www/html/*'
+        sh 'ssh jenkins@ws-ub tar -zcvf /home/jenkins/html.tar.gz /var/www/html && rm -rf /var/www/html/* && ls -la /var/www/html/'
         sh 'ssh jenkins@ws-ub tar -xzvf deploy.tar.gz -C /var/www/html/'
       }
     }
