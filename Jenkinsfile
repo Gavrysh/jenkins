@@ -42,7 +42,7 @@ pipeline {
         emailext body: 'Please go to ${BUILD_URL} and verify the build',
         recipientProviders: [[$class: 'DevelopersRecipientProvider'],
         [$class: 'RequesterRecipientProvider']],
-        subject: "Job '${JOB_NAME}' (${BUILD_NUMBER}) is waiting for input",
+        subject: "Job '${JOB_NAME}' (${BUILD_NUMBER}) is waiting for input"
     }
   }
 }
