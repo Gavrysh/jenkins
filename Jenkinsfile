@@ -9,7 +9,7 @@ pipeline {
       steps {
         echo 'Building..'
         sh 'rm -rf /home/jenkins/project && mkdir /home/jenkins/project && cd /home/jenkins/'
-        sh 'git clone git@github.com:Gavrysh/courses.git /home/jenkins/project/'
+        sh 'git clone git@github.com:Gavrysh/jenkins.git /home/jenkins/project/'
         sh 'cd /home/jenkins/project/ && tar --exclude=\'.git\' --exclude=\'Jenkinsfile\' -zcvf /home/jenkins/deploy.tar.gz *'
       }
     }
