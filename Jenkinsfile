@@ -17,7 +17,7 @@ pipeline {
         echo 'Building..'
         sh 'rm -rf /home/jenkins/html && mkdir /home/jenkins/html && cd /home/jenkins/'
         sh 'git clone git@github.com:Gavrysh/jenkins.git /home/jenkins/html/'
-        sh 'pwd && tar --exclude=\'.git\' --exclude=\'Jenkinsfile\' -zcvf deploy.tar.gz html/'
+        sh 'cd ~ && pwd && tar --exclude=\'.git\' --exclude=\'Jenkinsfile\' -zcvf deploy.tar.gz html/'
       }
     }
     stage('Test') {
