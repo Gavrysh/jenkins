@@ -15,22 +15,19 @@ pipeline {
     stage('Build') {
       steps {
         echo 'Building..'
-        sh 'rm -rf /home/jenkins/html && mkdir /home/jenkins/html && cd /home/jenkins/'
-        sh 'git clone git@github.com:Gavrysh/Mailer.git /home/jenkins/html/'
-        sh 'cd ~ && tar --exclude=\'.git\' --exclude=\'Jenkinsfile\' -zcvf deploy.tar.gz html/'
+        sh './build.sh'
       }
     }
     stage('Test') {
       steps {
         echo 'Testing arhive ...'
+		sh './test.sh'
       }
     }
     stage('Deploy') {
       steps {
         echo 'Deploying....'
-        sh 'scp /home/jenkins/deploy.tar.gz jenkins@ws-ub:/home/jenkins'
-        sh 'ssh jenkins@ws-ub tar -zcvf /home/jenkins/html.tar.gz /var/www/html && rm -rf /var/www/html/*'
-        sh 'ssh jenkins@ws-ub tar -xzvf deploy.tar.gz -C /var/www/'
+        sh './deploy.sh'
       }
     }
   }
