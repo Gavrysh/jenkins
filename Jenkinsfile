@@ -15,7 +15,7 @@ pipeline {
     stage('Build') {
       steps {
         echo 'Prepare ...'
-		sh 'rm -rf /home/jenkins/html && mkdir /home/jenkins/html && cd /home/jenkins/'
+		sh 'mkdir /home/jenkins/html && cd /home/jenkins/'
 		
 		echo 'GitHub clone ...'
 		sh 'git clone git@github.com:Gavrysh/jenkins.git /home/jenkins/html/'
