@@ -19,7 +19,7 @@ pipeline {
 		
 		echo 'GitHub clone ...'
 		sh 'git clone git@github.com:Gavrysh/jenkins.git /home/jenkins/html/'
-		chmod +x *.sh
+		sh 'chmod +x *.sh'
 		
 		echo 'Building ...'
         sh './build.sh'
